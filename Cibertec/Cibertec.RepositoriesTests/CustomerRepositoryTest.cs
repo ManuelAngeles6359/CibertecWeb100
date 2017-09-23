@@ -13,13 +13,13 @@ namespace Cibertec.Repositories.EntityFrameworkTests
 
 
         private readonly DbContext _context;
-        private readonly CustomerRepository repo;
+        private readonly NorthwindUnitOfWork unit;
 
 
         public CustomerRepositoryTest()
         {
             _context = new NorthwindDBContext();
-            repo = new CustomerRepository(_context);
+            unit = new NorthwindUnitOfWork(_context);
 
         }
 
@@ -31,7 +31,7 @@ namespace Cibertec.Repositories.EntityFrameworkTests
         {
 
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.GetList();
+            var result = unit.Customers.GetList();
             Assert.True(result.Count() > 0);
         }
 
@@ -42,7 +42,7 @@ namespace Cibertec.Repositories.EntityFrameworkTests
         {
             Customer customer = GetNewCustomer();
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.Insert(customer);
+            var result = unit.Customers.Insert(customer);
             Assert.True(result > 0);
         }
 
@@ -52,8 +52,8 @@ namespace Cibertec.Repositories.EntityFrameworkTests
         {
             var customer = GetNewCustomer();
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.Insert(customer);
-            Assert.True(repo.Delete(customer));
+            var result = unit.Customers.Insert(customer);
+            Assert.True(unit.Customers.Delete(customer));
         }
 
         
@@ -75,10 +75,10 @@ namespace Cibertec.Repositories.EntityFrameworkTests
         public void Customer_Repository_Update()
         {
             //var repo = new RepositoryEF<Customer>(_context);
-            var customer = repo.GetById(10);
+            var customer = unit.Customers.GetById(10);
             Assert.True(customer != null);
             customer.FirstName = $"Today {DateTime.Now.ToShortDateString()}";
-            Assert.True(repo.Update(customer));
+            Assert.True(unit.Customers.Update(customer));
         }
 
 
@@ -86,10 +86,19 @@ namespace Cibertec.Repositories.EntityFrameworkTests
         public void Customer_Repository_Get_By_Id()
         {
             //var repo = new RepositoryEF<Customer>(_context);
-            var customer = repo.GetById(10);          
+            var customer = unit.Customers.GetById(10);          
             Assert.True(customer != null);
         }
 
+
+                [Fact(DisplayName = "[CustomerRepository]Search By Names")]
+        public void Customer_Repository_Search_By_Name()
+        {
+
+            var customer = unit.Customers.SearchByName("Maria", "Anders");
+            Assert.True(customer != null);
+
+        }
 
 
     }

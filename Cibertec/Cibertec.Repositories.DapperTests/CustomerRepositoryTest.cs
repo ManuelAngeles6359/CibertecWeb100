@@ -10,13 +10,13 @@ namespace Cibertec.Repositories.DapperTests
     {
 
                 
-        private readonly CustomerRepository repo;
+        private readonly NorthwindUnitOfWork unit;
 
 
         public CustomerRepositoryTest()
         {
             
-            repo = new CustomerRepository("Server=.;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
+            unit = new NorthwindUnitOfWork("Server=.;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
 
         }
 
@@ -25,7 +25,7 @@ namespace Cibertec.Repositories.DapperTests
         {
 
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.GetList();
+            var result = unit.Customers.GetList();
             Assert.True(result.Count() > 0);
         }
 
@@ -36,7 +36,7 @@ namespace Cibertec.Repositories.DapperTests
         {
             Customer customer = GetNewCustomer();
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.Insert(customer);
+            var result = unit.Customers.Insert(customer);
             Assert.True(result > 0);
         }
 
@@ -46,8 +46,8 @@ namespace Cibertec.Repositories.DapperTests
         {
             var customer = GetNewCustomer();
             //var repo = new RepositoryEF<Customer>(_context);
-            var result = repo.Insert(customer);
-            Assert.True(repo.Delete(customer));
+            var result = unit.Customers.Insert(customer);
+            Assert.True(unit.Customers.Delete(customer));
         }
 
 
@@ -69,10 +69,10 @@ namespace Cibertec.Repositories.DapperTests
         public void Customer_Repository_Update()
         {
             //var repo = new RepositoryEF<Customer>(_context);
-            var customer = repo.GetById(10);
+            var customer = unit.Customers.GetById(10);
             Assert.True(customer != null);
             customer.FirstName = $"Today {DateTime.Now.ToShortDateString()}";
-            Assert.True(repo.Update(customer));
+            Assert.True(unit.Customers.Update(customer));
         }
 
 
@@ -80,8 +80,19 @@ namespace Cibertec.Repositories.DapperTests
         public void Customer_Repository_Get_By_Id()
         {
             //var repo = new RepositoryEF<Customer>(_context);
-            var customer = repo.GetById(10);
+            var customer = unit.Customers.GetById(10);
             Assert.True(customer != null);
+        }
+
+
+
+        [Fact(DisplayName = "[CustomerRepository]Search By Names")]
+        public void Customer_Repository_Search_By_Name()
+        {
+
+            var customer = unit.Customers.SearchByName("Maria", "Anders");
+            Assert.True(customer != null);
+
         }
 
 

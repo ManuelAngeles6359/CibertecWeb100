@@ -31,7 +31,7 @@ namespace Cibertec.MVC.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            if (customer != null && _unit.Customers.Update(customer))            
+            if (ModelState.IsValid && _unit.Customers.Update(customer))            
                 return RedirectToAction("Index");
             return View(customer);
         }
@@ -44,7 +44,7 @@ namespace Cibertec.MVC.Controllers
         [HttpPost]
         public IActionResult Create(Customer customer)
         {
-            if (customer != null && _unit.Customers.Insert(customer)>0)
+            if (ModelState.IsValid && _unit.Customers.Insert(customer)>0)
                 return RedirectToAction("Index");
             return View(customer);
         }

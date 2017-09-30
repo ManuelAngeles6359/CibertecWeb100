@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Cibertec.UnitOfWork;
 using Cibertec.MVC.Models;
-using Cibertec.Repositories.EntityFramework.Northwind;
-using Microsoft.EntityFrameworkCore;
+using Cibertec.Repositories.Dapper.Northwind;
 
 namespace Cibertec.MVC
 {
@@ -31,11 +26,9 @@ namespace Cibertec.MVC
                 (
 
                 option => new NorthwindUnitOfWork(
-                    new NorthwindDbContext(
-                        new DbContextOptionsBuilder<NorthwindDbContext>()
-                        .UseSqlServer(Configuration.GetConnectionString("Northwind"))
-                        .Options
-                        )
+                    
+                            Configuration.GetConnectionString("Northwind")
+                       
 
                     )
                  );

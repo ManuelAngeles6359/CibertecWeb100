@@ -13,7 +13,7 @@ namespace Cibertec.Repositories.Dapper
 
         public Repository(string connectionString)
         {
-            SqlMapperExtensions.TableNameMapper = (type) => { return $"{ type.Name }"; };
+            SqlMapperExtensions.TableNameMapper = (type) => { return $" [{ type.Name }]"; };
             _connectionString = connectionString;
         }
 
@@ -42,7 +42,7 @@ namespace Cibertec.Repositories.Dapper
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.GetAll<T>();
+              return connection.GetAll<T>();
             }
 
         }

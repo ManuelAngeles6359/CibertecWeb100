@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.MVC", "Cibertec.MV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.WebApi", "Cibertec.WebApi\Cibertec.WebApi.csproj", "{CDF53A85-4D29-43DA-80C2-66863C3409BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.WebApi.Tests", "Cibertec.WebApi.Tests\Cibertec.WebApi.Tests.csproj", "{C72A78FC-FF10-454A-B90E-9E596534108A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.WebApi.Tests", "Cibertec.WebApi.Tests\Cibertec.WebApi.Tests.csproj", "{C72A78FC-FF10-454A-B90E-9E596534108A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Mocked", "Cibertec.Mocked\Cibertec.Mocked.csproj", "{5D26D36F-F989-4AAB-B73C-AD68D78FD374}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{C72A78FC-FF10-454A-B90E-9E596534108A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C72A78FC-FF10-454A-B90E-9E596534108A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C72A78FC-FF10-454A-B90E-9E596534108A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D26D36F-F989-4AAB-B73C-AD68D78FD374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D26D36F-F989-4AAB-B73C-AD68D78FD374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D26D36F-F989-4AAB-B73C-AD68D78FD374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D26D36F-F989-4AAB-B73C-AD68D78FD374}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{6BEE3B4E-4F70-449C-8F5B-0C3161304579} = {F1D519E1-56B6-48E9-8981-12A065C42AC1}
 		{CDF53A85-4D29-43DA-80C2-66863C3409BE} = {F1D519E1-56B6-48E9-8981-12A065C42AC1}
 		{C72A78FC-FF10-454A-B90E-9E596534108A} = {D3B6BC09-50C1-4555-A374-F5F29EA8AD10}
+		{5D26D36F-F989-4AAB-B73C-AD68D78FD374} = {D3B6BC09-50C1-4555-A374-F5F29EA8AD10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA846BAC-8AC7-454E-B999-B090DFE2217E}

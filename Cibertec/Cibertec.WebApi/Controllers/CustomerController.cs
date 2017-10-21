@@ -24,27 +24,35 @@ namespace Cibertec.WebApi.Controllers
         public IActionResult GetById(int id)
         {
             return Ok(_unit.Customers.GetById(id));
-        }
+        }
 
-       [HttpPost]       public IActionResult Post([FromBody] Customer customer)
+
+       [HttpPost]
+       public IActionResult Post([FromBody] Customer customer)
         {
             if (ModelState.IsValid)
                 return Ok(_unit.Customers.Insert(customer));
             return BadRequest(ModelState);
         }
-        [HttpPut]        public IActionResult Put([FromBody] Customer customer)
-        {
-            if (ModelState.IsValid && _unit.Customers.Update(customer))
-                return Ok(new { Message ="The customoer is update"});
 
+        [HttpPut]
+        public IActionResult Put([FromBody] Customer customer)
+        {
+            if (ModelState.IsValid && _unit.Customers.Update(customer) && customer.Id > 0)
+                return Ok(new { Message ="The customer is updated"});            
+            
             return BadRequest(ModelState);
 
-        }        [HttpDelete]        public IActionResult Delete([FromBody] Customer customer)
+        }
+
+        [HttpDelete]
+        public IActionResult Delete([FromBody] Customer customer)
         {
             if (customer.Id > 0)
                 return Ok(_unit.Customers.Delete(customer));
             return BadRequest(new { Message = "Incorrect data." });
-        }
+        }
+
 
     }
 }

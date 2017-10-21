@@ -66,10 +66,11 @@ namespace Cibertec.WebApi.Tests
 
         }
 
-
-        //[Fact(DisplayName ="[CustomerController] Update")]
-        //public void Update_Customer_Test()
+        //[Fact(DisplayName = "[CustomerController] Insert Error")]
+        //public void Insert_Error_Customer_Test()
         //{
+
+
         //    var customer = new Customer
         //    {
         //        Id = 1,
@@ -80,29 +81,70 @@ namespace Cibertec.WebApi.Tests
         //        Phone = "941719681"
         //    };
 
-            
-        //    var result = _customerController.Put(customer) as OkObjectResult;
+        //    var result = _customerController.Post(customer) as BadRequestObjectResult;
 
 
-        //    result.Should().NotBeNull();
-        //    result.Value.Should().NotBeNull();
-
-
-        //    var model = result.Value?.GetType().GetProperty("Message").GetValue(result.Value);
-
-        //    model.Should().Be("The customer is updated");
-
-        //    var currentCustomer = _unitMocked.Customers.GetById(1);
-        //    currentCustomer.Should().NotBeNull();
-        //    currentCustomer.Id.Should().Be(customer.Id);
-        //    currentCustomer.City.Should().Be(customer.City);
-        //    currentCustomer.Country.Should().Be(customer.Country);
-        //    currentCustomer.FirstName.Should().Be(customer.FirstName);
-        //    currentCustomer.LastName.Should().Be(customer.LastName);
-        //    currentCustomer.Phone.Should().Be(customer.Phone);
-
+        //    result.Should().Equals(400);
 
         //}
+
+
+        [Fact(DisplayName = "[CustomerController] Update")]
+        public void Update_Customer_Test()
+        {
+            var customer = new Customer
+            {
+                Id = 1,
+                City = "Lima",
+                Country = "Peru",
+                FirstName = "Manuel",
+                LastName = "Angeles",
+                Phone = "941719681"
+            };
+
+
+            var result = _customerController.Put(customer) as OkObjectResult;
+
+            
+            result.Should().NotBeNull();
+            result.Value.Should().NotBeNull();
+
+
+            var model = result.Value?.GetType().GetProperty("Message").GetValue(result.Value);
+
+            model.Should().Be("The customer is updated");
+
+            var currentCustomer = _unitMocked.Customers.GetById(1);
+            currentCustomer.Should().NotBeNull();
+            currentCustomer.Id.Should().Be(customer.Id);
+            currentCustomer.City.Should().Be(customer.City);
+            currentCustomer.Country.Should().Be(customer.Country);
+            currentCustomer.FirstName.Should().Be(customer.FirstName);
+            currentCustomer.LastName.Should().Be(customer.LastName);
+            currentCustomer.Phone.Should().Be(customer.Phone);
+
+
+        }
+
+        [Fact(DisplayName = "[CustomerController] Update Error")]
+        public void Update_Error_Customer_Test()
+        {
+            var customer = new Customer
+            {
+                Id = -100,
+                City = "Lima",
+                Country = "Peru",
+                FirstName = "Manuel",
+                LastName = "Angeles",
+                Phone = "941719681"
+            };
+
+
+            var result = _customerController.Put(customer) as BadRequestObjectResult;
+
+            result.Should().Equals(400);            
+                    
+        }
 
 
         [Fact(DisplayName ="[CustomerController] Delete")]
@@ -123,6 +165,23 @@ namespace Cibertec.WebApi.Tests
             model.Should().BeTrue();
 
         }
+
+
+        [Fact(DisplayName = "[CustomerController] Delete Error")]
+        public void Delete_Error_Customer_Test()
+        {
+
+            var customer = new Customer
+            {
+                Id = -100
+            };
+
+            var result = _customerController.Delete(customer) as BadRequestObjectResult;
+
+            result.Should().Equals(400);
+
+        }
+
 
         [Fact(DisplayName ="[CustomerController] Get By Id")]
         public void GetById_Csutomer_Test()

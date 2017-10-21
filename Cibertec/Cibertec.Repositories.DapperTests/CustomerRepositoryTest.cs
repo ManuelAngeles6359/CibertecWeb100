@@ -24,7 +24,7 @@ namespace Cibertec.Repositories.DapperTests
         public void Customer_Repository_GetAll()
         {
 
-            //var repo = new RepositoryEF<Customer>(_context);
+            
             var result = unit.Customers.GetList();
             Assert.True(result.Count() > 0);
         }
@@ -34,8 +34,7 @@ namespace Cibertec.Repositories.DapperTests
         [Fact(DisplayName = "[CustomerRepository]Insert")]
         public void Customer_Repository_Insert()
         {
-            Customer customer = GetNewCustomer();
-            //var repo = new RepositoryEF<Customer>(_context);
+            Customer customer = GetNewCustomer();            
             var result = unit.Customers.Insert(customer);
             Assert.True(result > 0);
         }
@@ -44,8 +43,7 @@ namespace Cibertec.Repositories.DapperTests
         [Fact(DisplayName = "[CustomerRepository]Delete")]
         public void Customer_Repository_Delete()
         {
-            var customer = GetNewCustomer();
-            //var repo = new RepositoryEF<Customer>(_context);
+            var customer = GetNewCustomer();            
             var result = unit.Customers.Insert(customer);
             Assert.True(unit.Customers.Delete(customer));
         }

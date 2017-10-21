@@ -312,12 +312,33 @@ window.matchMedia || (window.matchMedia = function() {
 
 var assemblies = [
   {
+    "name" : "Cibertec.Mocked",
+    "classes" : [
+    {  "name" : "Cibertec.Mocked.UnitOfWorkMocked", "reportPath" : "Cibertec.Mocked_UnitOfWorkMocked.htm", "coveredLines" : 22, "uncoveredLines" : 0, "coverableLines" : 22, "totalLines" : 61, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 2, "totalBranches" : 2, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+  ]},
+  {
+    "name" : "Cibertec.Repositories.Dapper",
+    "classes" : [
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.CustomerRepository", "reportPath" : "Cibertec.Repositories.Dapper_CustomerRepository.htm", "coveredLines" : 0, "uncoveredLines" : 11, "coverableLines" : 11, "totalLines" : 37, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.NorthwindUnitOfWork", "reportPath" : "Cibertec.Repositories.Dapper_NorthwindUnitOfWork.htm", "coveredLines" : 0, "uncoveredLines" : 14, "coverableLines" : 14, "totalLines" : 35, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.OrderItemRepository", "reportPath" : "Cibertec.Repositories.Dapper_OrderItemRepository.htm", "coveredLines" : 0, "uncoveredLines" : 2, "coverableLines" : 2, "totalLines" : 15, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.OrderRepository", "reportPath" : "Cibertec.Repositories.Dapper_OrderRepository.htm", "coveredLines" : 0, "uncoveredLines" : 2, "coverableLines" : 2, "totalLines" : 15, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.ProductRepository", "reportPath" : "Cibertec.Repositories.Dapper_ProductRepository.htm", "coveredLines" : 0, "uncoveredLines" : 2, "coverableLines" : 2, "totalLines" : 12, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.SupplierRepository", "reportPath" : "Cibertec.Repositories.Dapper_SupplierRepository.htm", "coveredLines" : 0, "uncoveredLines" : 2, "coverableLines" : 2, "totalLines" : 15, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Northwind.UserRepository", "reportPath" : "Cibertec.Repositories.Dapper_UserRepository.htm", "coveredLines" : 0, "uncoveredLines" : 10, "coverableLines" : 10, "totalLines" : 35, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.Repositories.Dapper.Repository`1", "reportPath" : "Cibertec.Repositories.Dapper_Repository_1.htm", "coveredLines" : 0, "uncoveredLines" : 19, "coverableLines" : 19, "totalLines" : 72, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+  ]},
+  {
+    "name" : "Cibertec.UnitOfWork",
+    "classes" : [
+  ]},
+  {
     "name" : "Cibertec.WebApi",
     "classes" : [
     {  "name" : "Cibertec.WebApi.Authentication.JsonWebToken", "reportPath" : "Cibertec.WebApi_JsonWebToken.htm", "coveredLines" : 0, "uncoveredLines" : 4, "coverableLines" : 4, "totalLines" : 16, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
     {  "name" : "Cibertec.WebApi.Authentication.RsaJwtTokenProvider", "reportPath" : "Cibertec.WebApi_RsaJwtTokenProvider.htm", "coveredLines" : 0, "uncoveredLines" : 27, "coverableLines" : 27, "totalLines" : 65, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
     {  "name" : "Cibertec.WebApi.Controllers.BaseController", "reportPath" : "Cibertec.WebApi_BaseController.htm", "coveredLines" : 3, "uncoveredLines" : 0, "coverableLines" : 3, "totalLines" : 24, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 0, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
-    {  "name" : "Cibertec.WebApi.Controllers.CustomerController", "reportPath" : "Cibertec.WebApi_CustomerController.htm", "coveredLines" : 8, "uncoveredLines" : 5, "coverableLines" : 13, "totalLines" : 58, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 2, "totalBranches" : 8, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
+    {  "name" : "Cibertec.WebApi.Controllers.CustomerController", "reportPath" : "Cibertec.WebApi_CustomerController.htm", "coveredLines" : 13, "uncoveredLines" : 0, "coverableLines" : 13, "totalLines" : 58, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 8, "totalBranches" : 15, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
     {  "name" : "Cibertec.WebApi.Controllers.OrderController", "reportPath" : "Cibertec.WebApi_OrderController.htm", "coveredLines" : 0, "uncoveredLines" : 13, "coverableLines" : 13, "totalLines" : 57, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 8, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
     {  "name" : "Cibertec.WebApi.Controllers.OrderItemController", "reportPath" : "Cibertec.WebApi_OrderItemController.htm", "coveredLines" : 0, "uncoveredLines" : 13, "coverableLines" : 13, "totalLines" : 64, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 8, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },
     {  "name" : "Cibertec.WebApi.Controllers.ProductController", "reportPath" : "Cibertec.WebApi_ProductController.htm", "coveredLines" : 0, "uncoveredLines" : 13, "coverableLines" : 13, "totalLines" : 62, "coverageType" : "LineCoverage", "methodCoverage" : "-", "coveredBranches" : 0, "totalBranches" : 8, "lineCoverageHistory" : [], "branchCoverageHistory" : [] },

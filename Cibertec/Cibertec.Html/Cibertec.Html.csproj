@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="scss\components\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

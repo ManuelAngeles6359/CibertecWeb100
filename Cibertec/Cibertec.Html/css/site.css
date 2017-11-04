@@ -116,3 +116,7 @@ ul li a {
 input:invalid {
   border: 2px solid red; }
 
+.map {
+  width: 100%;
+  height: 400px; }
+

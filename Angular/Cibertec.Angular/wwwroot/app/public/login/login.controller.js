@@ -3,11 +3,11 @@
 
     angular.module('app').controller('loginController', loginController);
 
-    loginController.$inject = ['$http', '$state', 'localStorageService', 'configService'];
+    loginController.$inject = ['$http', '$state', 'localStorageService', 'configService','authenticationService'];
 
 
 
-    function loginController($http, $state, localStorageService, configService) {
+    function loginController($http, $state, localStorageService, configService, authenticationService) {
 
         var vm = this;
         vm.user = {};

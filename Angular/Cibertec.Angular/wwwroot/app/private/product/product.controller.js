@@ -1,11 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('app')
-        .controller('productController', productController);
-    productController.$inject = ['dataService', 'configService',
-        '$state', '$scope'];
-    function productController(dataService, configService, $state,
-        $scope) {
+    angular.module('app').controller('productController', productController);
+    productController.$inject = ['dataService', 'configService','$state', '$scope'];
+    function productController(dataService, configService, $state, $scope) {
         var apiUrl = configService.getApiUrl();
         var vm = this;
 
@@ -32,7 +29,7 @@
         init();
         function init() {
             if (!configService.getLogin()) return $state.go('login');
-            configurePagination()
+            configurePagination();
         }
         function configurePagination() {
             //In case mobile just show 5 pages
@@ -45,18 +42,15 @@
             getPageRecords(vm.currentPage);
         }
         function totalRecords() {
-            dataService.getData(apiUrl + '/product/count')
-                .then(function (result) {
+            dataService.getData(apiUrl + '/product/count').then(function (result) {
                     vm.totalRecords = result.data;
                     getPageRecords(vm.currentPage);
-                }
-                , function (error) {
+                }, function (error) {
                     console.log(error);
                 });
         }
         function getPageRecords(page) {
-            dataService.getData(apiUrl + '/product/list/' + page + '/'
-                + vm.itemsPerPage)
+            dataService.getData(apiUrl + '/product/list/' + page + '/' + vm.itemsPerPage)
                 .then(function (result) {
                     vm.productList = result.data;
                 },
@@ -68,8 +62,7 @@
 
         function getProduct(id) {
             vm.product = null;
-            dataService.getData(apiUrl + '/product/' + id)
-                .then(function (result) {
+            dataService.getData(apiUrl + '/product/' + id).then(function (result) {
                     vm.product = result.data;
                 },
                 function (error) {
@@ -79,8 +72,7 @@
         }
         function updateProduct() {
             if (!vm.product) return;
-            dataService.putData(apiUrl + '/product', vm.product)
-                .then(function (result) {
+            dataService.putData(apiUrl + '/product', vm.product).then(function (result) {
                     vm.product = {};
 
                     getPageRecords(vm.currentPage);
@@ -93,8 +85,7 @@
         }
         function createProduct() {
             if (!vm.product) return;
-            dataService.postData(apiUrl + '/product', vm.product)
-                .then(function (result) {
+            dataService.postData(apiUrl + '/product', vm.product).then(function (result) {
                     getProduct(result.data);
                     detail();
                     getPageRecords(1);
@@ -107,9 +98,7 @@
                 });
         }
         function deleteProduct() {
-            dataService.deleteData(apiUrl + '/product/' +
-                vm.product.id)
-                .then(function (result) {
+            dataService.deleteData(apiUrl + '/product/' + vm.product.id).then(function (result) {
                     getPageRecords(vm.currentPage);
                     closeModal();
                 },

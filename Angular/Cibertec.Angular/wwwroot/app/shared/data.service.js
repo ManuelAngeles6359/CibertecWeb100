@@ -6,7 +6,7 @@
     dataService.$inject = ['$http'];
 
     function dataService($http) {
-        var dataService = {};
+        var service = {};
         service.getData = getData;
         service.postData = postData;
         service.putData = putData;

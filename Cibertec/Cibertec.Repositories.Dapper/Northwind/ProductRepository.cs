@@ -19,7 +19,7 @@ namespace Cibertec.Repositories.Dapper.Northwind
            SqlConnection(_connectionString))
             {
                 return connection.ExecuteScalar<int>("SELECT Count(Id) FROM dbo.Product");
-               }
+            }
         }
 
            
@@ -27,17 +27,16 @@ namespace Cibertec.Repositories.Dapper.Northwind
         public IEnumerable<Product> PagedList(int startRow, int endRow)
         {
             if (startRow >= endRow) return new List<Product>();
-            using (var connection = new
-           SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@startRow", startRow);
                 parameters.Add("@endRow", endRow);
-                return
-               connection.Query<Product>("dbo.ProductPagedList",
-                parameters,
-               commandType:
-               System.Data.CommandType.StoredProcedure);
+
+                return connection.Query<Product>("dbo.ProductPagedList",
+                        parameters,
+                        commandType:
+                        System.Data.CommandType.StoredProcedure);
             }
         }
 

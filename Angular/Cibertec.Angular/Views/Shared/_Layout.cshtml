@@ -32,6 +32,7 @@
                         <a ng-if="vm.validate()" ng-click="vm.logout()"
                            href="#" ui-sref-active="active">Logout</a>
                     </li>
+                    <li><a ng-if="vm.validate()" ui-sref="product" ui-srefactive="active">Product</a></li>
                 </ul>
             </div>
         </div>
@@ -53,6 +54,7 @@
         <script src="~/libraries/angular/angular.js"></script>
         <script src="~/libraries/angular/angular-ui-router.js"></script>
         <script src="~/libraries/angular/angular-local-storage.js"></script>
+        <script src="~/libraries/angular/ui-bootstrap-tpls.js"></script>
 
 
 
@@ -60,12 +62,19 @@
         <script src="~/app/app.routes.js"></script>
         <script src="~/app/app.config.js"></script>
         <script src="~/app/app.controller.js"></script>
+        <script src="~/app/app.interceptor.js"></script>
         
 
         <script src="~/app/shared/data.service.js"></script>
         <script src="~/app/shared/setting.service.js"></script>
         <script src="~/app/shared/authentication.service.js"></script>
         <script src="~/app/public/login/login.controller.js"></script>
+
+        <script src="~/app/private/product/directives/product-card/product.card.js"></script>
+        <script src="~/app/private/product/directives/product-form/product.form.js"></script>
+        <script src="~/app/private/product/product.controller.js"></script>
+
+
 
 
     </environment>

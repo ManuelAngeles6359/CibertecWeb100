@@ -153,4 +153,4 @@
             angular.element('#modal-container').modal('hide');
         }
     }
-})();
+})();

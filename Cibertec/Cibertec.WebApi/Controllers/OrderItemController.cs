@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Cibertec.UnitOfWork;
 using Cibertec.Models;
 
 namespace Cibertec.WebApi.Controllers
 {
-    
+
     [Route("api/OrderItem")]
     public class OrderItemController : BaseController
     {
@@ -39,20 +34,42 @@ namespace Cibertec.WebApi.Controllers
                 return Ok(_unit.OrderItems.Insert(orderItem));
             return BadRequest(ModelState);
         }
-        [HttpPut]        public IActionResult Put([FromBody] OrderItem orderItem)
+
+        [HttpPut]
+        public IActionResult Put([FromBody] OrderItem orderItem)
         {
             if (ModelState.IsValid && _unit.OrderItems.Update(orderItem))
                 return Ok(new { Message = "The orderItem is update" });
 
             return BadRequest(ModelState);
 
-        }        [HttpDelete]        public IActionResult Delete([FromBody] OrderItem orderItem)
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(int? id)
         {
-            if (orderItem.Id > 0)
-                return Ok(_unit.OrderItems.Delete(orderItem));
+            if (id.HasValue && id.Value > 0)
+                return Ok(_unit.OrderItems.Delete(new OrderItem { Id = id.Value }));
             return BadRequest(new { Message = "Incorrect data." });
         }
 
+
+        [HttpGet]
+        [Route("count")]
+        public IActionResult GetCount()
+        {
+            return Ok(_unit.OrderItems.Count());
+        }
+
+        [HttpGet]
+        [Route("list/{page}/{rows}")]
+        public IActionResult GetList(int page, int rows)
+        {
+            var startRecord = ((page - 1) * rows) + 1;
+            var endRecord = page * rows;
+            return Ok(_unit.OrderItems.PagedList(startRecord, endRecord));
+        }
 
 
     }

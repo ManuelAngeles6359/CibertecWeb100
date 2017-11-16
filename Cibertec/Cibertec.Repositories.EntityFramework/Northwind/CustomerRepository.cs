@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Cibertec.Repositories.EntityFramework.Northwind
 {
-    public class CustomerRepository : Repository<Customer>, ICustomerRepository
+    public class CustomerRepository : Repository<Customer>
     {
         public CustomerRepository(DbContext context) : base(context)
         {
@@ -18,5 +18,9 @@ namespace Cibertec.Repositories.EntityFramework.Northwind
             return _context.Set<Customer>().FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
 
         }
+
+
+
+
     }
 }

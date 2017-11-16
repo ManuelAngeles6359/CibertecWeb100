@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Cibertec.UnitOfWork;
 using Cibertec.Models;
 
 namespace Cibertec.WebApi.Controllers
 {
-    
+
     [Route("api/Supplier")]
     public class SupplierController : BaseController
     {
@@ -39,18 +34,41 @@ namespace Cibertec.WebApi.Controllers
                 return Ok(_unit.Suppliers.Insert(supplier));
             return BadRequest(ModelState);
         }
-        [HttpPut]        public IActionResult Put([FromBody] Supplier supplier)
+
+        [HttpPut]
+        public IActionResult Put([FromBody] Supplier supplier)
         {
             if (ModelState.IsValid && _unit.Suppliers.Update(supplier))
                 return Ok(new { Message = "The supplier is update" });
 
             return BadRequest(ModelState);
 
-        }        [HttpDelete]        public IActionResult Delete([FromBody] Supplier supplier)
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(int? id)
         {
-            if (supplier.Id > 0)
-                return Ok(_unit.Suppliers.Delete(supplier));
+            if (id.HasValue && id.Value > 0)
+                return Ok(_unit.Suppliers.Delete(new Supplier { Id = id.Value }));
             return BadRequest(new { Message = "Incorrect data." });
+        }
+
+
+        [HttpGet]
+        [Route("count")]
+        public IActionResult GetCount()
+        {
+            return Ok(_unit.Suppliers.Count());
+        }
+
+        [HttpGet]
+        [Route("list/{page}/{rows}")]
+        public IActionResult GetList(int page, int rows)
+        {
+            var startRecord = ((page - 1) * rows) + 1;
+            var endRecord = page * rows;
+            return Ok(_unit.Suppliers.PagedList(startRecord, endRecord));
         }
 
 

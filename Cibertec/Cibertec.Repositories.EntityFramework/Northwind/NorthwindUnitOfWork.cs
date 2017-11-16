@@ -1,7 +1,4 @@
 ﻿using Cibertec.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Cibertec.Repositories.Northwind;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +10,7 @@ namespace Cibertec.Repositories.EntityFramework.Northwind
         public NorthwindUnitOfWork(DbContext context)
         {
 
-            Customers = new CustomerRepository(context);
+            //Customers = new CustomerRepository(context);
 
         }
 

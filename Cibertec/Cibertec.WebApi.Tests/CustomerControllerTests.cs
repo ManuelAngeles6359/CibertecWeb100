@@ -151,12 +151,9 @@ namespace Cibertec.WebApi.Tests
         public void Delete_Customer_Test()
         {
 
-            var customer = new Customer
-            {
-                Id = 1
-            };
+            int customerId = 1;
 
-            var result = _customerController.Delete(customer) as OkObjectResult;
+            var result = _customerController.Delete(customerId) as OkObjectResult;
 
             result.Should().NotBeNull();
             result.Value.Should().NotBeNull();
@@ -171,12 +168,9 @@ namespace Cibertec.WebApi.Tests
         public void Delete_Error_Customer_Test()
         {
 
-            var customer = new Customer
-            {
-                Id = -100
-            };
+            int customerId = -100;
 
-            var result = _customerController.Delete(customer) as BadRequestObjectResult;
+            var result = _customerController.Delete(customerId) as OkObjectResult;
 
             result.Should().Equals(400);
 

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Cibertec.UnitOfWork;
 using Cibertec.Models;
 
 namespace Cibertec.WebApi.Controllers
 {
-    
+
     [Route("api/Order")]
     public class OrderController : BaseController
     {
@@ -46,11 +41,30 @@ namespace Cibertec.WebApi.Controllers
             return BadRequest(ModelState);
         }
 
-        public IActionResult Delete([FromBody] Order order)
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete(int? id)
         {
-            if (order.Id > 0)
-                return Ok(_unit.Orders.Delete(order));
-            return BadRequest(new { Message="Incorrect data."} );
+            if (id.HasValue && id.Value > 0)
+                return Ok(_unit.Orders.Delete(new Order { Id = id.Value }));
+            return BadRequest(new { Message = "Incorrect data." });
+        }
+
+
+        [HttpGet]
+        [Route("count")]
+        public IActionResult GetCount()
+        {
+            return Ok(_unit.Orders.Count());
+        }
+
+        [HttpGet]
+        [Route("list/{page}/{rows}")]
+        public IActionResult GetList(int page, int rows)
+        {
+            var startRecord = ((page - 1) * rows) + 1;
+            var endRecord = page * rows;
+            return Ok(_unit.Orders.PagedList(startRecord, endRecord));
         }
 
     }

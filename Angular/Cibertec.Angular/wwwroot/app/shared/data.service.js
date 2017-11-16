@@ -15,17 +15,16 @@
         return service;
 
         function getData(url) {
-            return $http.get(url)
+            return $http.get(url);
         }
-        function postData(url) {
-            return $http.post(url)
+        function postData(url, data) {
+            return $http.post(url, data);
         }
-        function putData(url) {
-            return $http.put(url)
+        function putData(url, data) {
+            return $http.put(url, data);
         }
         function deleteData(url) {
-            return $http.delete(url)
+            return $http.delete(url);
         }
-
     }
 })();

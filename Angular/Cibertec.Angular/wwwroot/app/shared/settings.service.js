@@ -9,7 +9,6 @@
         var service = {};
         var apiUrl = undefined;
         var isLogged = false;
-
         service.setLogin = setLogin;
         service.getLogin = getLogin;
         service.setApiUrl = setApiUrl;
@@ -23,7 +22,7 @@
         }
 
         function getLogin() {
-            return apiUrl;
+            return isLogged;
         }
 
         function getApiUrl() {
@@ -33,9 +32,5 @@
         function setApiUrl(url) {
             apiUrl = url;
         }
-
-
-
-
     }
 })();
